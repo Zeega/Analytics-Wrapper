@@ -8,7 +8,7 @@ function( app ) {
 
     return Backbone.Model.extend({
 
-        loggingEnabled: trues,
+        loggingEnabled: true,
 
         initialize: function() {
             app.on( "all", this.onEvent, this );
