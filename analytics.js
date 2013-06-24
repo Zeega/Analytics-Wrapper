@@ -72,17 +72,34 @@ function( app ) {
             "project_preview",
             "media_search",
             "page_added",
-            "share",
-           // "view_item",
             "layer_font_change",
             "toggle_help",
             "help",
             "preview_toggle_view",
             "toggle_page_background",
             "new_zeega",
+            "advance_toggle",
+          
+           // "view_item",
+
+            //player
+            
+            // "start_over",
+            // "mute_toggle",
+            // "fullscreen_toggle",
+            "zeega_view",
+            "favorite",
+            "unfavorite",
+            "viewed_to_end",
+
+
+
+        //shared
+
+            "share",
             "to_profile",
-            "to_home",
-            "advance_toggle"
+            "to_home"
+
         ],
 
         modelEvents: [
