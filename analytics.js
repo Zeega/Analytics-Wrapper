@@ -93,6 +93,8 @@ function( app ) {
             "viewed_to_end",
 
 
+            //mobile player
+            "swipe_to_play",
 
         //shared
 
