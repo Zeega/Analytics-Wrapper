@@ -35,16 +35,16 @@ function( app ) {
                 params = {
                     type: model.get("type"),
                     source: model.get("attr").archive ?  model.get("attr").archive : "none"
-                }
+                };
             } else if ( model.modelType == "sequence" ){
                 params = {
                     pageCount: model.frames.length
-                }
+                };
             } else if ( model.modelType == "item" ){
                 params = {
                     type: model.get("media_type"),
                     source: model.get("archive") ?  model.get("archive") : "none"
-                }
+                };
             }
             
             params = _.extend( params, model.eventData );
@@ -96,6 +96,10 @@ function( app ) {
             //mobile player
             "swipe_to_play",
 
+            //community
+
+            "to_signup",
+
         //shared
 
             "share",
@@ -136,7 +140,7 @@ function( app ) {
                         console.log( "tracking event:: " + event, params );
                     }
                 }
-            }
+            };
         }
 
     });
