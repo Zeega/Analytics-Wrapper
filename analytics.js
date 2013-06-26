@@ -8,7 +8,7 @@ function( app ) {
 
     return Backbone.Model.extend({
 
-        loggingEnabled: true,
+        loggingEnabled: false,
 
         initialize: function() {
             app.on( "all", this.onEvent, this );
@@ -34,7 +34,7 @@ function( app ) {
             } else if ( model.modelType == "layer" ){
                 params = {
                     type: model.get("type"),
-                    source: model.get("attr").archive ?  model.get("attr").archive : "none"
+                    api: model.get("attr").archive ?  model.get("attr").archive : "none"
                 };
             } else if ( model.modelType == "sequence" ){
                 params = {
@@ -43,7 +43,7 @@ function( app ) {
             } else if ( model.modelType == "item" ){
                 params = {
                     type: model.get("media_type"),
-                    source: model.get("archive") ?  model.get("archive") : "none"
+                    api: model.get("archive") ?  model.get("archive") : "none"
                 };
             }
             
