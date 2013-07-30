@@ -113,6 +113,7 @@ function( app ) {
             //community
 
             "to_signup",
+            "delete-zeega",
 
         //shared
 
