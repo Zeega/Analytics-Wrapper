@@ -145,6 +145,9 @@ function( app ) {
             "favorite",
             "unfavorite",
             "viewed_to_end",
+            "exit_create",
+            "exit_remix",
+            "exit_watch_more",
 
 
             //mobile player
