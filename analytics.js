@@ -10,6 +10,17 @@ function( app ) {
 
         loggingEnabled: true,
 
+        mediaCategories: [
+            "sports",
+            "animals",
+            "reaction",
+            "texture",
+            "pop",
+            "GIFart",
+            "news"
+        ],
+
+
         initialize: function() {
             app.on( "all", this.onEvent, this );
             if( !window.mixpanel ){
@@ -32,10 +43,9 @@ function( app ) {
             if( model.modelType == "frame" ){
                 params.layerCount = model.layers.length;
             } else if ( model.modelType == "layer" ){
-                params = {
-                    type: model.get("type"),
-                    api: model.get("attr").archive ?  model.get("attr").archive : "none"
-                };
+
+                params = this.getLayerParams( model );
+
             } else if ( model.modelType == "sequence" ){
                 params = {
                     pageCount: model.frames.length
@@ -50,6 +60,36 @@ function( app ) {
             params = _.extend( params, model.eventData );
 
             this.trackEvent( event, params );
+
+
+        },
+
+
+        getLayerParams: function( layer ){
+
+
+
+                params = {
+                    type: layer.get("type"),
+                    api: layer.get("attr").archive ?  layer.get("attr").archive : "none",
+                    category: "unknown",
+                    trending: false,
+                    favorite: false
+                };
+
+                if( layer.get("attr") && layer.get("attr").user && layer.get("attr").user.username == "admin" ){
+                    params.category = _.intersection( layer.get("attr").tags, this.mediaCategories ) ?
+                        _.intersection( layer.get("attr").tags, this.mediaCategories )[0] : "unknown";
+                    params.trending = _.contains( layer.get("attr").tags, "trending" );
+                    params.favorite = true;
+
+                    if(_.isNumber(layer.get("attr").id)){
+                        params.row = Math.floor( layer.get("attr").id / 3 );
+                        params.column = layer.get("attr").id % 3;
+                    }
+
+                }
+                return params;
 
 
         },
